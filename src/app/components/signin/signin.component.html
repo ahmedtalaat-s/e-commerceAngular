@@ -1,0 +1,41 @@
+<h2 class="h1 text-main fw-semibold text-center my-5 ">Sign Up</h2>
+
+<form [formGroup]="signin" (ngSubmit)="sendData(signin.value)">
+
+  <!-- email input -->
+
+  <div class="form-floating  mb-3 w-75 m-auto mb-4">
+    <input type="email" id="email" formControlName="email" class="form-control shadow-sm" placeholder="" name="email" />
+    <label for="email">Email</label>
+  </div>
+  <div *ngIf="(signin.controls.email.touched===true && signin.controls.email.errors !==null)"
+    class="alert alert-danger w-75 m-auto mb-4">
+    <p class="m-0" *ngIf="(signin.get('email')?.getError('required'))">Email is required</p>
+    <p class="m-0" *ngIf="(signin.get('email')?.getError('email'))">Email is invalid</p>
+  </div>
+  <!-- password input -->
+  <div class="form-floating  mb-3 w-75 m-auto  mb-4">
+    <input type="password" id="password" formControlName="password" class="form-control shadow-sm" placeholder=""
+      name="password" />
+    <label for="password">Password</label>
+  </div>
+  <div *ngIf="(signin.controls.password.touched===true && signin.controls.password.errors !==null)"
+    class="alert alert-danger w-75 m-auto mb-4">
+    <p class="m-0" *ngIf="(signin.get('password')?.getError('required'))">password is required</p>
+    <p class="m-0" *ngIf="(signin.get('password')?.getError('pattern'))">Enter from 6 to 10 characters 'digits &
+      numbers' </p>
+  </div>
+<div *ngIf="err" class="alert alert-warning w-75 m-auto mb-2">
+  <div class="m-0 d-flex align-items-center">
+    <i class="fa-solid fa-triangle-exclamation rating-color me-2 "></i>
+    <p class="m-0">{{errMsg}}</p>
+  </div>
+</div>
+
+
+  <!-- submit button -->
+  <button [class.spinner-border]="isloading" class="btn btn-main d-block m-auto" type="submit"><span
+      [class.visually-hidden]="isloading">Log in</span></button>
+
+</form>
+

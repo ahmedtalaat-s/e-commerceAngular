@@ -1,0 +1,10 @@
+{
+  "routes": [
+    "/brands",
+    "/cart",
+    "/categories",
+    "/home",
+    "/signin",
+    "/signup"
+  ]
+}

@@ -1,0 +1,35 @@
+<div class="row row-cols-2 row-cols-md-4 row-cols-lg-6 gy-4 gx-4 py-5 px-2">
+  @for (product of products; track $index) {
+  <div (click)="redirectproduct(product.id)" class="col overflow-hidden cursor-pointer product border-main rounded-1 ">
+   <div class="overflow-hidden  pb-2"><img [src]="product.imageCover" class="w-100 scale" height="250"  alt=""></div>
+   <p class="text-sm text-main fw-medium mb-0 py-1">{{product.category.name}}</p>
+   <p class="fw-medium ">{{product.title.split(' ').slice(0,2).join(' ')}}</p>
+   <p>{{ product.price|currency:'EGP'}}</p>
+   <p class="d-flex align-items-center justify-content-between ms-1"><span>{{product.ratingsAverage}}</span>
+    <span class="d-flex rating-color" *ngIf="product.ratingsAverage>4.5">
+      <i class="fa-solid fa-star"></i>
+      <i class="fa-solid fa-star"></i>
+      <i class="fa-solid fa-star"></i>
+      <i class="fa-solid fa-star"></i>
+      <i class="fa-solid fa-star"></i>
+    </span>
+    <span class="d-flex rating-color" *ngIf="product.ratingsAverage===4.5">
+      <i class="fa-solid fa-star"></i>
+      <i class="fa-solid fa-star"></i>
+      <i class="fa-solid fa-star"></i>
+      <i class="fa-solid fa-star"></i>
+      <i class="fa-solid fa-star-half-stroke"></i>
+    </span>
+    <span class="d-flex rating-color" *ngIf="product.ratingsAverage<4.5">
+      <i class="fa-solid fa-star"></i>
+      <i class="fa-solid fa-star"></i>
+      <i class="fa-solid fa-star"></i>
+      <i class="fa-solid fa-star"></i>
+      <i class="fa-regular fa-star"></i>
+    </span>
+   </p>
+  <button class="btn btn-main w-100 text-center btn-product mb-3 m-auto">Add +</button>
+  </div>
+  }
+</div>
+

@@ -1,0 +1,68 @@
+<h2 class="h1 text-main fw-semibold text-center my-5 m-auto">Register Now</h2>
+
+<form [formGroup]="signup" (ngSubmit)="sendData(signup.value)">
+<!-- name input -->
+<div class="form-floating mb-3 w-75 m-auto mb-4">
+  <input type="text" id="name" formControlName="name" class="form-control border border-light shadow-sm" placeholder="" name="name" />
+  <label for="name">Name</label>
+</div>
+
+<div *ngIf="(signup.controls.name.touched===true && signup.controls.name.errors !==null)" class="alert alert-danger w-75 m-auto mb-4">
+  <p class="m-0" *ngIf="(signup.get('name')?.getError('required'))">Name Required</p>
+  <p class="m-0" *ngIf="(signup.get('name')?.getError('minlength'))">The Min length should be 3</p>
+  <p class="m-0" *ngIf="(signup.get('name')?.getError('maxlength'))">The Max length should be 10</p>
+</div>
+<!-- email input -->
+
+<div  class="form-floating  mb-3 w-75 m-auto mb-4">
+  <input type="email" id="email" formControlName="email" class="form-control shadow-sm" placeholder="" name="email" />
+  <label for="email">Email</label>
+</div>
+<div *ngIf="(signup.controls.email.touched===true && signup.controls.email.errors !==null)"
+  class="alert alert-danger w-75 m-auto mb-4">
+  <p class="m-0" *ngIf="(signup.get('email')?.getError('required'))">Email is required</p>
+  <p class="m-0" *ngIf="(signup.get('email')?.getError('email'))">Email is invalid</p>
+</div>
+<!-- password input -->
+<div class="form-floating  mb-3 w-75 m-auto  mb-4">
+  <input type="password" id="password" formControlName="password" class="form-control shadow-sm" placeholder="" name="password" />
+  <label for="password">Password</label>
+</div>
+<div *ngIf="(signup.controls.password.touched===true && signup.controls.password.errors !==null)"
+  class="alert alert-danger w-75 m-auto mb-4">
+  <p class="m-0" *ngIf="(signup.get('password')?.getError('required'))">password is required</p>
+  <p class="m-0" *ngIf="(signup.get('password')?.getError('pattern'))">Enter from 6 to 10 characters 'digits & numbers' </p>
+</div>
+<!-- repassword input -->
+<div class="form-floating  mb-3 w-75 m-auto mb-4">
+  <input type="password" id="repassword" formControlName="rePassword" class="form-control  shadow-sm" placeholder="" name="repassword" />
+  <label for="repassword">Repassword</label>
+</div>
+<div *ngIf="(signup.controls.rePassword.touched===true && signup.controls.rePassword.errors !==null)"
+  class="alert alert-danger w-75 m-auto mb-4">
+  <p class="m-0" *ngIf="(signup.get('rePassword')?.getError('required'))">repassword is required</p>
+  <p class="m-0" *ngIf="(signup.get('rePassword')?.getError('pattern'))">Enter from 6 to 10 characters 'digits & numbers'
+  </p>
+</div>
+<!-- phone input -->
+<div class="form-floating  mb-3 w-75 m-auto ">
+  <input type="tel" id="phone" formControlName="phone" class="form-control shadow-sm" placeholder="" name="phone" />
+  <label for="phone">Phone</label>
+</div>
+<div *ngIf="(signup.controls.phone.touched===true && signup.controls.phone.errors !==null)"
+  class="alert alert-danger w-75 m-auto mb-4">
+  <p class="m-0" *ngIf="(signup.get('phone')?.getError('required'))">phone is required</p>
+  <p class="m-0" *ngIf="(signup.get('phone')?.getError('pattern'))">Enter valid phone number'</p>
+</div>
+
+<div *ngIf="err" class="alert alert-warning w-75 m-auto mb-2">
+  <div class="m-0 d-flex align-items-center">
+    <i class="fa-solid fa-triangle-exclamation rating-color me-2 "></i>
+    <p class="m-0">{{errMsg}}</p>
+  </div>
+</div>
+
+<!-- submit button -->
+<button [class.spinner-border]="isloading" class="btn btn-main d-block m-auto" type="submit"><span [class.visually-hidden]="isloading" >Register</span></button>
+
+</form>

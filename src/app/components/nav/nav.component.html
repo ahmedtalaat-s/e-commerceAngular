@@ -1,0 +1,50 @@
+<nav
+  class="navbar navbar-expand-sm navbar-light bg-light"
+>
+  <div class="container">
+    <a class="navbar-brand" routerLink="/home"><img src="./assets/freshcart-logo.svg" alt=""></a>
+    <button
+      class="navbar-toggler d-lg-none"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#collapsibleNavId"
+      aria-controls="collapsibleNavId"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
+      <ul *ngIf="islogin" class="navbar-nav me-auto mt-2 mt-lg-0">
+        <li  class="nav-item">
+          <a class="nav-link nav-hover" routerLink="/home" routerLinkActive="routerActive">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-hover" routerLink="/cart" routerLinkActive="routerActive">Cart</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-hover" routerLink="/products" routerLinkActive="routerActive">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-hover" routerLink="/categories" routerLinkActive="routerActive">Categories</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-hover" routerLink="/brands" routerLinkActive="routerActive">Brands</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto mt-2 mt-lg-0 ms-5">
+        <li *ngIf="!islogin" class="nav-item">
+          <a class="nav-link nav-hover" routerLink="/signin" routerLinkActive="routerActive">Log In</a>
+        </li>
+        <li *ngIf="!islogin" class="nav-item">
+          <a class="nav-link nav-hover" routerLink="/signup" routerLinkActive="routerActive">Register</a>
+        </li>
+        <li *ngIf="islogin" (click)="logOut()" class="nav-item cursor-pointer">
+          <a class="nav-link nav-hover" >LogOut</a>
+        </li>
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
